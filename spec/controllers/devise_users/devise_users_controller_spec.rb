@@ -19,7 +19,7 @@ module DeviseUsers
       it "return success if devise user manager logined" do
         allow(controller).to receive(:signed_in?).and_return(true)
         allow(controller).to receive_message_chain(:devise_resource_object, :devise_user_manager?).and_return(true)
-        allow(controller).to receive(:active_users).and_return([double("person")])
+        allow(controller).to receive(:query_active_users).and_return [ double("user") ]
         get :index, { use_route: :engine_name }
         expect(response).to be_success
       end

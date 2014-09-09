@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-body data-table-wrapper">
+        <table class="table table-bordered table-hover data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>EMail</th>
+              <th>Lastest Signed in At</th>
+              <th>Sign in Count</th>
+              <th>Created at</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @recent_users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.current_sign_in_at.present? or user.last_sign_in_at.present? %>
+                <%= (user.current_sign_in_at || user.last_sign_in_at).in_time_zone %>
+                <% end %>
+              </td>
+              <td>
+                <%= user.sign_in_count %>
+              </td>
+              <td><%= user.created_at.in_time_zone %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="data-table-info">Showing 1 to 10 of 57 entries</div>
+          </div>
+          <div class="col-xs-6">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+</div>

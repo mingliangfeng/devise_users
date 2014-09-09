@@ -1,0 +1,4 @@
+en:
+  devise_users:
+    authentication_required: A signed in Devise user is required.
+    authorisation_required: Devise user must repsond to 'devise_user_manager?' and return true to manage other users.

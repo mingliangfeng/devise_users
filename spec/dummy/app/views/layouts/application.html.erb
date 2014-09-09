@@ -3,12 +3,23 @@
 <head>
   <title>Dummy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if flash[:notice] %>
+  <div><%= flash[:notice] %></div>
+<% end %>
+<% if flash[:alert] %>
+  <div><%= flash[:alert] %></div>
+<% end %>
+<%
+  flash[:notice] = nil
+  flash[:alert] = nil
+%>
 
 <%= yield %>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

@@ -2,7 +2,7 @@ module DeviseUsers
   class ApplicationController < ActionController::Base
     include Devise::Controllers::Helpers
     include Devise::Controllers::SignInOut
-    before_action :authenticate_devise_resource
+    before_action :authenticate_devise_resource, :total_user_number
 
   private
     def authenticate_devise_resource
@@ -20,6 +20,11 @@ module DeviseUsers
     def devise_resource_class
       devise_resource_object.class
     end
+
+    def total_user_number
+      @total_user_number = devise_resource_class.count
+    end
+    helper_method :total_user_number
 
     def devise_resource_object
       @devise_resource_object = self.send "current_#{devise_resource_name}".to_sym

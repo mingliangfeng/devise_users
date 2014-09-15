@@ -5,11 +5,11 @@
         <table class="table table-bordered table-hover data-table">
           <thead>
             <tr>
-              <th>#</th>
+              <th>ID</th>
               <th>EMail</th>
-              <th>Lastest Signed in At</th>
+              <th>Last Signed in At</th>
               <th>Sign in Count</th>
-              <th>Created at</th>
+              <th>Created At</th>
             </tr>
           </thead>
           <tbody>
@@ -32,7 +32,7 @@
         </table>
         <div class="row">
           <div class="col-xs-6">
-            <div class="data-table-info">Showing 1 to 10 of 57 entries</div>
+            <div class="data-table-info">Showing <%= @recent_users.count %> active users out of total <%= total_user_number %></div>
           </div>
           <div class="col-xs-6">
           </div>

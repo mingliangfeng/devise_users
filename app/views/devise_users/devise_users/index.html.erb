@@ -2,12 +2,47 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-body data-table-wrapper">
-        All users list
+        <table class="table table-bordered table-hover data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>EMail</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+              <th>Last Signed in At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= user.created_at.in_time_zone %></td>
+              <td><%= user.updated_at.in_time_zone if user.updated_at.in_time_zone.present? %></td>
+              <td><%= user.last_sign_in_at.in_time_zone if user.last_sign_in_at.present? %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="data-table-info">Showing <%= @users.count %> of total <%= @users_count %></div>
+          </div>
+          <div class="col-xs-6">
+            <%= paginate @users %>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- /.box-body -->
   </div>
+  <!-- /.box -->
 </div>
 
 <% content_for :header do %>
-User List <small>all devise users</small>
+  <% if @searching %>
+  Search Users <small>users match your search criterias <strong>'<%=params[:q]%>'</strong></small>
+  <% else %>
+  User List <small>all devise users</small>
+  <% end %>
 <% end %>

@@ -11,6 +11,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 require "devise_users"
 require 'devise'
+require 'kaminari'
 
 module Dummy
   class Application < Rails::Application

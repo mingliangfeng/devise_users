@@ -11,16 +11,16 @@
   <!-- /.search form -->
   <!-- sidebar menu -->
   <ul class="sidebar-menu">
-    <li class="active">
+    <li class="<%= 'active' if @menu_item == :active_users %>">
       <%= link_to root_path do %>
         <i class="fa fa-clock-o"></i> <span>Active Users</span>
       <% end %>
     </li>
-    <li>
+    <li class="<%= 'active' if @menu_item == :user_list %>">
       <%= link_to all_path do %>
         <i class="fa fa-users"></i> <span>User List</span>
         <small class="badge pull-right bg-green"><%= total_user_number %></small>
       <% end %>
     </li>
-  </ul>
+  </ul>  
 </section><!-- /.sidebar -->

@@ -1,0 +1,11 @@
+<%= simple_form_for @user do |f| %>
+  <div class='box-body'>
+    <%= f.error_notification %>
+
+    <%= f.input :email, placeholder: 'Enter email' %>
+
+    <%= f.input :password, placeholder: 'Password' %>
+  </div>
+
+  <div class="box-footer"><%= f.button :submit %></div>
+<% end %>

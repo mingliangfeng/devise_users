@@ -1,6 +1,6 @@
 <section class="sidebar">
   <!-- search form -->
-  <form action="<%= search_path %>" method="get" class="sidebar-form">
+  <form action="<%= search_users_path %>" method="get" class="sidebar-form">
     <div class="input-group">
       <input type="text" name="q" class="form-control" placeholder="Search Users..."/>
       <span class="input-group-btn">
@@ -17,10 +17,10 @@
       <% end %>
     </li>
     <li class="<%= 'active' if @menu_item == :user_list %>">
-      <%= link_to all_path do %>
+      <%= link_to users_path do %>
         <i class="fa fa-users"></i> <span>User List</span>
         <small class="badge pull-right bg-green"><%= total_user_number %></small>
       <% end %>
     </li>
-  </ul>  
+  </ul>
 </section><!-- /.sidebar -->

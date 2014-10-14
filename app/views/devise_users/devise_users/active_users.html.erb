@@ -10,13 +10,16 @@
               <th>Last Signed in At</th>
               <th>Sign in Count</th>
               <th>Created At</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <% @recent_users.each do |user| %>
             <tr>
               <td><%= user.id %></td>
-              <td><%= user.email %></td>
+              <td>
+                <%= user.email %>
+              </td>
               <td>
                 <% if user.current_sign_in_at.present? or user.last_sign_in_at.present? %>
                 <%= (user.current_sign_in_at || user.last_sign_in_at).in_time_zone %>
@@ -26,6 +29,14 @@
                 <%= user.sign_in_count %>
               </td>
               <td><%= user.created_at.in_time_zone %></td>
+              <td class="text-center user-action">
+                <%= link_to user_path(user) do %>
+                <i class="fa fa-hand-o-right"></i>
+                <% end %>
+                <%= link_to edit_user_path(user) do %>
+                <i class="fa fa-edit"></i>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>

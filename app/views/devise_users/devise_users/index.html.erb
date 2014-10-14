@@ -10,16 +10,27 @@
               <th>Created At</th>
               <th>Updated At</th>
               <th>Last Signed in At</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <% @users.each do |user| %>
             <tr>
               <td><%= user.id %></td>
-              <td><%= user.email %></td>
+              <td>
+                <%= user.email %>
+              </td>
               <td><%= user.created_at.in_time_zone %></td>
-              <td><%= user.updated_at.in_time_zone if user.updated_at.in_time_zone.present? %></td>
+              <td><%= user.updated_at.in_time_zone if user.updated_at.present? %></td>
               <td><%= user.last_sign_in_at.in_time_zone if user.last_sign_in_at.present? %></td>
+              <td class="text-center user-action">
+                <%= link_to user_path(user) do %>
+                <i class="fa fa-hand-o-right"></i>
+                <% end %>
+                <%= link_to edit_user_path(user) do %>
+                <i class="fa fa-edit"></i>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>

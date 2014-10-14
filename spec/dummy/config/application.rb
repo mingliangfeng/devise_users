@@ -12,6 +12,7 @@ Bundler.require(*Rails.groups)
 require "devise_users"
 require 'devise'
 require 'kaminari'
+require 'simple_form'
 
 module Dummy
   class Application < Rails::Application

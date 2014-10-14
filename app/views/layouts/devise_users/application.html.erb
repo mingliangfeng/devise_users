@@ -45,7 +45,7 @@
       <aside class="left-side sidebar-offcanvas">
         <%= render '/devise_users/shared/side_bar' %>
         <div style="text-align: center;margin-top: 30px;">
-          <button type="button" class="btn btn-primary">Create User</button>
+          <%= link_to 'Create User', new_user_path, class: 'btn btn-primary' %>
         </div>
       </aside>
 

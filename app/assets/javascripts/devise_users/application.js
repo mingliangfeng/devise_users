@@ -12,3 +12,25 @@
 //
 //= require jquery_ujs
 //= require_tree .
+
+$.rails.sweetConfirm = function(element) {
+  var message = element.data('confirm');
+  swal({
+    title: "Are you sure?",
+    text: message,
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: true
+  }, function() {
+    element.removeAttr('data-confirm');
+    element.trigger('click.rails');
+  });
+};
+
+$.rails.allowAction = function(element) {
+  if (!element.attr('data-confirm')) return true;
+  $.rails.sweetConfirm(element);
+  return false;
+};

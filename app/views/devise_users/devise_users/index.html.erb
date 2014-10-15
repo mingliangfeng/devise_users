@@ -30,6 +30,9 @@
                 <%= link_to edit_user_path(user) do %>
                 <i class="fa fa-edit"></i>
                 <% end %>
+                <%= link_to user_path(user), method: :delete, data: { confirm: 'Are you sure to delete this user?' } do %>
+                <i class="fa fa-trash"></i>
+                <% end %>
               </td>
             </tr>
             <% end %>

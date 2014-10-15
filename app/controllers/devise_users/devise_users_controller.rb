@@ -39,6 +39,12 @@ module DeviseUsers
       end
     end
 
+    def destroy
+      @user = devise_resource_class.find params[:id]
+      @user.destroy
+      redirect_to users_url, notice: 'user'
+    end
+
     def search
       search_query = devise_resource_class.where("email LIKE ?", "%#{params[:q]}%")
       @users_count = search_query.count
